@@ -1,6 +1,5 @@
 vim.g.mapleader = ' '
 
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.system({
@@ -14,12 +13,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     end
 
 vim.opt.rtp:prepend(lazypath)
-
--- Add dotfiles/nvim/lua to Lua's search path
-local dotfiles_nvim_path = "~/dotfiles/nvim/lua/?.lua"
-local dotfiles_nvim_init_path = "~/dotfiles/nvim/lua/init.lua"
-package.path = package.path .. ";" .. vim.fn.expand(dotfiles_nvim_path) .. ";" .. vim.fn.expand(dotfiles_nvim_init_path)
-
 
 local opts = {}
 local plugins = {
@@ -46,11 +39,6 @@ local plugins = {
 }
 
 require("lazy").setup(plugins, opts)
-
-
--- THEME --
-vim.cmd.colorscheme "citruszest"
-
 
 -- TELESCOPE --
 local builtin = require('telescope.builtin')
@@ -95,11 +83,6 @@ require("nvim-tree").setup({
   },
 })
 
--- Yank to clipboard using xclip
-vim.api.nvim_set_keymap('v', '<Leader>y', ':w !xclip -selection clipboard<CR>', { noremap = true, silent = true })
-
--- Paste from clipboard using xclip
-vim.api.nvim_set_keymap('n', '<Leader>p', ':r !xclip -selection clipboard -o<CR>', { noremap = true, silent = true })
 
 require("core.keymaps")
-require("core.settings")
+require("core.options")
