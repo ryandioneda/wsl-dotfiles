@@ -1,7 +1,8 @@
 
 
 -- Navigation --
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', {desc = 'Toggle NvimTree window'})
+vim.keymap.set('n', '<leader>f', '<C-W>W', {desc = 'Switch focus to NvimTree window'})
 
 -- General
 vim.keymap.set('n', '<leader>w', '<cmd>write<CR>', {desc = 'Save'})
